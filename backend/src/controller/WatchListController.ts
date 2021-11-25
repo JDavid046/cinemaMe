@@ -42,14 +42,64 @@ class WatchListController{
             const watchList = await watchListRepository.find({where: {user: id}});            
             res.send(watchList);
         } catch (error) {
-            res.status(404).json({ message: `Not result. Error:  ${error}` });
+            res.status(404).json({ message: 'Not result.' });
         }
 
     };
 
-    static updateUserWatchList = async (req: Request, res: Response) => {
+    static updateStateUserWatchList = async (req: Request, res: Response) => {
+        let user;
+        let watchList;
         const { userId, filmId } =req.params;
-        console.log(`user: ${userId} , film: ${filmId}`);
+        const { status } = req.body;
+
+        const watchListRepository = getRepository(WatchList);
+        const userRepository = getRepository(Users);
+        
+        try {
+          watchList = await watchListRepository.findOneOrFail({where: {filmId: filmId, user: userId}});
+          user = await userRepository.findOneOrFail(userId);
+
+          /*watchList.user = user;
+          watchList.filmId = filmId;*/
+
+          let theDate = new Date();        
+          
+          switch (status) {
+                case "En Curso":                          
+                    watchList.fechaInicio = theDate.toISOString().split('T')[0];  
+                    watchList.estadoFilm = status;
+                    watchList.temporadaActual = "0";
+                    break;
+
+                case "Finalizado":
+                    watchList.fechaFin = theDate.toISOString().split('T')[0];  
+                    watchList.temporadaActual = "0";
+                    watchList.estadoFilm = status;
+                    break;          
+          
+                default:
+                    break;
+          }
+    
+        } catch (e) {
+          return res.status(404).json({ message: 'WatchList not found' });
+        }
+        const validationOpt = { validationError: { target: false, value: false } };
+        const errors = await validate(watchList, validationOpt);
+    
+        if (errors.length > 0) {
+          return res.status(400).json(errors);
+        }
+    
+        // Try to save watchlist
+        try {
+          await watchListRepository.update({filmId, user}, watchList);
+        } catch (e) {
+          return res.status(409).json({ message:`Something went wrong. Error: ${e}` });
+        }
+    
+        res.status(201).json({ message: 'WatchList Updated' });       
     };
 }
 

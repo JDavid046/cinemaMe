@@ -36,6 +36,6 @@ router.post('/film/', WatchListController.newFilm);
 router.get('/film/:id', WatchListController.getAllUserWatchList);
 
 // Update 1 User's WatchList
-router.patch('/film/:userId/:filmId', WatchListController.updateUserWatchList);
+router.patch('/film/:userId/:filmId', WatchListController.updateStateUserWatchList);
 
 export default router;
