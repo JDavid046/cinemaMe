@@ -1,8 +1,7 @@
-import { checkRole } from './../middlewares/role';
 import { checkJwt } from './../middlewares/jwt';
 import { UserController } from './../controller/UserController';
 import { Router } from 'express';
-import FilmController from '../controller/FilmController';
+import WatchListController from '../controller/WatchListController';
 
 const router = Router();
 
@@ -27,13 +26,16 @@ router.delete('/:id', UserController.delete);
 
 
 /**
- * Operations on Films
+ * Operations on WatchLists
  */
 
-// Create a new Film
-router.post('/film/', FilmController.newFilm);
+// Create a new WatchList
+router.post('/film/', WatchListController.newFilm);
 
-// Get one user
-router.get('/film/:id', FilmController.changeStateFilm);
+// Get WatchLists by UserId
+router.get('/film/:id', WatchListController.getAllUserWatchList);
+
+// Update 1 User's WatchList
+router.patch('/film/:userId/:filmId', WatchListController.updateUserWatchList);
 
 export default router;
