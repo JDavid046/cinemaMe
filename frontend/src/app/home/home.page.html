@@ -1,0 +1,108 @@
+<ion-content [fullscreen]="true">  
+  
+  <!-- NavBar -->  
+  <div>
+    <div class="header-blue">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container-fluid"><a class="navbar-brand" href="#">CinemaMe</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a style="color: #ffff;" class="nav-link" href="#">Contact</a></li>
+                        <li class="nav-item dropdown"><a style="color: #ffff;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Services</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Logo design</a><a class="dropdown-item" role="presentation" href="#">Banner design</a><a class="dropdown-item" role="presentation" href="#">content writing</a></div>
+                        </li>
+                    </ul>
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group"><label for="search-field"><i class="fa fa-search text-white"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                    </form><span class="navbar-text"> <a class="login" [routerLink]="['/login']">Log In</a></span><a class="btn btn-light action-button" role="button" href="#">Signup</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <content-body>    
+    <div class="container">
+      <input type="radio" name="slider" id="item-1" checked>
+      <input type="radio" name="slider" id="item-2">
+      <input type="radio" name="slider" id="item-3">
+    <div class="cards">
+      <label class="card" for="item-1" id="song-1">
+        <img src="assets/home/home2.jpg" alt="song">
+      </label>
+      <label class="card" for="item-2" id="song-2">
+        <img src="assets/home/home.jpg" alt="song">
+      </label>
+      <label class="card" for="item-3" id="song-3">
+        <img src="assets/home/home3.jpg" alt="song">
+      </label>        
+    </div>
+  </div>
+  </content-body> 
+
+  <info-content style="background-color: #A18276;">
+    <ion-list style="background-color: #A18276;">
+      <ion-item>
+        <ion-label>Pokémon Yellow</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mega Man X</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>The Legend of Zelda</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pac-Man</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Super Mario World</ion-label>
+      </ion-item>
+    </ion-list>
+    
+    <!-- List of Input Items -->
+    <ion-list>
+      <ion-item>
+        <ion-label>Input</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Toggle</ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Radio</ion-label>
+        <ion-radio slot="end"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Checkbox</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    
+    <!-- List of Sliding Items -->
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>Item</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>Item</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </info-content>
+
+  <!-- List of Text Items -->
+
+ 
+</ion-content>

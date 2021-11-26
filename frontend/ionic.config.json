@@ -1,0 +1,7 @@
+{
+  "name": "cinemaMe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
