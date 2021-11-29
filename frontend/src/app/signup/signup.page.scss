@@ -15,13 +15,12 @@
     border-radius: 0;
     box-shadow: none;
     border: none
-  }
-  
+  } 
   
   .header-blue .navbar .navbar-brand {
     font-weight: bold;
     color: inherit
-  }    
+  }
 
 
 // ------------------------------------------------------------------
@@ -64,8 +63,8 @@ h1 {
 }
 
 .box{
-  width: 400px;
-  height: 470px;
+  width: 450px;
+  height: 620px;
   font-size: 16px;
   padding: 40px 40px;
   background: #0F044C;
@@ -101,7 +100,7 @@ input:focus{
   font-size: 12px;
 }
 .login-btn{
-  margin-top: 15px;
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +125,7 @@ input:focus{
 }
 
 .signup{
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .signup span{
@@ -139,10 +138,11 @@ input:focus{
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
     .container {
-      width: 100%;         
+      width: 100%;
+      height: 100%;
     }
     .box {
         width: 100%;
-        height: 500px;
+        height: 85%;
       }
 }

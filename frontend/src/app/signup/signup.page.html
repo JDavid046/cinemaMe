@@ -1,0 +1,49 @@
+<ion-content>
+
+  <link 
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+    crossorigin="anonymous"
+  />
+
+  <!-- NavBar -->  
+  <div>
+    <div class="header-blue">
+        <nav class="navbar navbar-dark">
+            <div class="container-fluid"><a class="navbar-brand" href="#">CinemaMe</a>
+                <div class="collapse navbar-collapse" id="navcol-1">                                     
+                </div>
+            </div>
+        </nav>
+    </div>
+  </div>
+
+  <body>
+    <div class="container">      
+      <div class="box">
+        <h1>Sign Up</h1>
+        <div class="user">
+          <i class="fas fa-user"></i>
+          <input type="text" name="firstName" id="firstName" placeholder="First Name"/>
+          <br><i class="fas fa-user"></i>
+          <input type="text" name="lastName" id="lastName" placeholder="Last Name"/>
+          <br><i class="fas fa-envelope"></i>
+          <input type="text" name="email" id="email" placeholder="Email Address"/>
+          <br><i class="fas fa-unlock-alt"></i>
+          <input type="password" name="password" id="password" placeholder="Password"/>
+          <br><i class="fas fa-unlock-alt"></i>
+          <input type="password" name="password" id="password" placeholder="Confirm Password"/>          
+        </div>
+  
+        <div class="login-btn">
+          <button class="btn">Register</button>          
+          <p class="signup">Alredy have an account? <span><a [routerLink]="['/login']">Log In</a></span></p>
+          <span><a style="margin-top: 0%;" [routerLink]="['/home']">Go Back Home</a></span>
+        </div>
+      </div>
+    </div>
+
+    <img src="assets/home/login.png" alt="">
+  </body>
+</ion-content>
