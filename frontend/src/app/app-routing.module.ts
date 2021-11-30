@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CheckLoginGuard } from './shared/guard/check-login.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
+  {
+    path: 'index',
+    loadChildren: () => import('./main/index/index.module').then( m => m.IndexPageModule)
+  },
+
 ];
 
 @NgModule({

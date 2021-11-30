@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CinemaService } from 'src/services/cinemame.service';
+import { CinemaService } from 'src/app/shared/services/cinemame.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -10,24 +10,27 @@ import Swal from 'sweetalert2';
 })
 export class LoginPage implements OnInit {
 
+  isLogged = false;
+
   constructor(
     private cinemaSvc: CinemaService,
     private route: Router
     ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
+    const session = this.cinemaSvc.isLogged.subscribe((res) => this.isLogged = res);
+    if(this.isLogged) this.route.navigate(['index']);
   }
 
   async login(data){
     
     try {
-      const result = await this.cinemaSvc.login({
+      this.cinemaSvc.login({
         "email": data.username,
         "password": data.password
+      }).subscribe(res => {
+        if(res) this.route.navigate(['index']);
       });
-
-      this.route.navigateByUrl('home');
-
     } catch (error) {
       Swal.fire({
         title: 'Error!',
