@@ -23,16 +23,27 @@
     <div class="container">      
       <div class="box">
         <h1>Sign In</h1>
-        <form #form="ngForm" (ngSubmit)="login(form.value)">
+        <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
           <div class="user">
             <i class="fas fa-envelope"></i>
-            <input type="text" name="username" id="username" placeholder="Email Address" ngModel/>
+            <input type="email"  id="email" name="email" placeholder="Email"  required 
+              [(ngModel)]="email" #n="ngModel" />  
+              
+              
             <br><i class="fas fa-unlock-alt"></i>
-            <input type="password" name="password" id="password" placeholder="Password" ngModel/>          
+            <input type="password" name="password" id="password" placeholder="Password" required minlength="4" 
+            [(ngModel)]="password" #n2="ngModel" />
+             
           </div>
     
           <div class="login-btn">
-            <button class="btn" type="submit">Log In</button>          
+            <ng-container *ngIf="n.errors?.['required'] || n2.errors?.['required']; else enabled">
+              <button class="btn" type="submit" disabled>Log In</button>
+            </ng-container>
+            <ng-template #enabled>
+              <button class="btn" type="submit">Log In</button>          
+            </ng-template>
+
             <p class="signup">Don't have an account? <span><a [routerLink]="['/signup']">Sign Up</a></span></p>
             <span><a style="margin-top: 0%;" [routerLink]="['/home']">Go Back Home</a></span>
           </div>

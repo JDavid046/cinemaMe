@@ -30,10 +30,16 @@ router.delete('/:id', UserController.delete);
  */
 
 // Create a new WatchList
-router.post('/film/', WatchListController.newFilm);
+router.post('/film', WatchListController.newFilm);
 
 // Get WatchLists by UserId
 router.get('/film/:id', WatchListController.getAllUserWatchList);
+
+// Get 1 WatchList by UserId
+router.get('/film/:filmId/:userId', WatchListController.getFilmbyUser);
+
+// Get WatchLists by UserId and Status
+router.get('/film/status/:status/:userId', WatchListController.getFilmByStatus);
 
 // Update 1 User's WatchList
 router.patch('/film/:userId/:filmId', WatchListController.updateStateUserWatchList);

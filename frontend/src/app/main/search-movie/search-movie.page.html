@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<!--<ion-toolbar>
+  <ion-title>API Connection</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+  </ion-buttons>
+
+  <ion-buttons collapse="true" slot="end">
+    <ion-button (click)="scrollTop()">
+      <ion-icon slot="icon-only" name="star"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>-->
+<form #form="ngForm" (ngSubmit)="searchMovie(form.value)">
+  <ion-searchbar animated name="toSearch" ngModel></ion-searchbar>
+</form>
+
+<ion-content>     
+
+  <ion-list>
+    <ion-card class="card-display">
+      <div *ngFor="let movie of movies">      
+        <ion-card-content>          
+          <div *ngIf="movie.Poster != 'N/A'; else noPoster">
+            <a routerLink="/detail-movie/{{movie.imdbID}}"><img class="card-image" src="{{movie.Poster}}" alt=""></a>
+          </div>
+
+          <ng-template #noPoster>
+            <a routerLink="/detail-movie/{{movie.imdbID}}"><img class="card-image" src="assets/notfound.png" alt=""></a>
+          </ng-template>
+
+          <br>
+          <ion-card-title class="card-text"><strong>{{movie.Title}}</strong></ion-card-title>
+          <br>
+          <ion-card-subtitle>{{movie.Year}}</ion-card-subtitle>
+        </ion-card-content>
+      </div>        
+    </ion-card>
+  </ion-list>      
+
+  <ion-infinite-scroll id="scroll" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

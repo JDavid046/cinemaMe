@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CinemaService } from '../../services/cinemame.service';
 
 @Component({
@@ -9,14 +8,12 @@ import { CinemaService } from '../../services/cinemame.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private cinemaSvc: CinemaService,
-    private route: Router) { }
+  constructor(private cinemaSvc: CinemaService) { }
 
   ngOnInit() {}
 
   onLogout(){
-    this.cinemaSvc.logout();
-    this.route.navigate(['login']);
+    this.cinemaSvc.logout();    
   }
 
 }

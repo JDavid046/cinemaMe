@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<ion-content>
+    <div id="body">
+        <section class="wrapper">
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of userFilms">
+                        <div class="card text-white card-has-bg click-col" style="background-image:url('{{item.Poster}}');">
+                            <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                            <div class="card-img-overlay d-flex flex-column">
+                                <div class="card-body">
+                                    <small class="card-meta mb-2">{{status}}</small>
+                                    <h4 class="card-title mt-0 "><a class="text-white">{{item.Title}}</a></h4>
+                                    
+                                </div>
+                                <div class="card-footer">
+                                    <div class="media">                                        
+                                        <div class="media-body">
+                                            <h6 class="my-0 text-white d-block">                                                
+                                                <ion-button shape="round" color="warning">Set as OnGoing</ion-button>
+                                            </h6>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>        
+        </section>
+           
+    </div>                  
+</ion-content>

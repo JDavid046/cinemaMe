@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_1: 'http://192.168.1.101:3000',
+  API_1: 'http://192.168.0.8:3000',
   API_2: 'https://www.omdbapi.com/?apikey=256c7bb2'
 };
 

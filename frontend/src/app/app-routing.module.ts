@@ -24,6 +24,21 @@ const routes: Routes = [
     path: 'index',
     loadChildren: () => import('./main/index/index.module').then( m => m.IndexPageModule)
   },
+  {
+    path: 'search-movie',
+    loadChildren: () => import('./main/search-movie/search-movie.module').then( m => m.SearchMoviePageModule)
+  },
+  {
+    path: 'detail-movie/:id',
+    loadChildren: () => import('./main/detail-movie/detail-movie.module').then( m => m.DetailMoviePageModule)
+  },
+  {
+    path: 'list-movie-status/:status',
+    loadChildren: () => import('./main/list-movie-status/list-movie-status.module').then( m => m.ListMovieStatusPageModule)
+  },
+
+
+
 
 ];
 

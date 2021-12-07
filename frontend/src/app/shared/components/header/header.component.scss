@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------
 
 .header-blue {  
-  background-color: #32021F;  
+  background-color: #3a3739;  
   font-family: 'Source Sans Pro', sans-serif
 }
 
@@ -121,25 +121,4 @@
 
 .header-blue .action-button:hover {
   color: #fff
-}
-
-.header-blue .navbar .form-inline label {
-  color: #d9d9d9
-}
-
-.header-blue .navbar .form-inline .search-field {
-  display: inline-block;
-  width: 80%;
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  border-radius: 0;
-  color: #fff;
-  box-shadow: none;
-  color: inherit;
-  transition: border-bottom-color 0.3s
-}
-
-.header-blue .navbar .form-inline .search-field:focus {
-  border-bottom: 1px solid #ccc
 }

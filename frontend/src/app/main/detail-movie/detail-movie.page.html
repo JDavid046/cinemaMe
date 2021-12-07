@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="main-container" *ngIf="movie">
+
+  <ion-toolbar>
+    <ion-title slot="end">
+      <div *ngIf="!toWatch; else disabled">
+        <ion-button color="success" (click)="addFilm()">Agregar</ion-button>        
+      </div>
+      <ng-template #disabled>
+        <ion-button disabled>On Going</ion-button>
+      </ng-template>      
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-movie"></ion-back-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+
+  <ion-content>
+    <ion-card class="ion-card" style="padding-bottom: 1%;">
+        <h1 style="color: black;"><strong>{{movie.Title}}</strong> - {{movie.Year}}</h1>        
+    </ion-card>
+
+    <div class="row">
+      <div class="image-column">
+        <div style="justify-content: center;">
+          <img class="image-detail" src="{{movie.Poster}}"/>
+          <div *ngIf="movie.Type == 'movie'; else series">
+            <h3>Movie</h3> 
+          </div>
+          <ng-template #series>
+            <h3>Series</h3>
+          </ng-template>
+          
+        </div>                                
+      </div>
+
+      <div class="detail-column">
+        <ion-card class="ion-card">
+          <div class="row" style="display: flex;">
+            <div class="column-detail">
+              <h2><strong>Rated:</strong> {{movie.Rated}}</h2>            
+            </div>          
+            <div class="column-detail">
+              <h2><strong>Rating: <ion-icon name="star"></ion-icon></strong> {{movie.imdbRating}}</h2>
+            </div>
+            <div class="column-detail" *ngIf="movie.Type === 'series'">
+              <h2><strong>Seasons:</strong> {{movie.totalSeasons}}</h2>
+            </div>
+          </div>
+        </ion-card>
+        
+        <div class="row" style="flex-wrap: wrap;">
+          <ion-card class="ion-card">
+            <h2><b>Género:</b></h2>
+            <h3 style="text-align: justify; color: black; font-size: 17px;">
+              {{movie.Genre}}
+            </h3>          
+            <h2><b>Duración:</b></h2>
+            <h3 style="text-align: justify; color: black; font-size: 17px;">
+              {{movie.Runtime}}
+            </h3>          
+            <h2><b>Plot:</b></h2> 
+            <h3 style="text-align: justify; color: black; font-size: 17px;">
+              {{movie.Plot}}
+            </h3>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+    
+  </ion-content>
+</div>

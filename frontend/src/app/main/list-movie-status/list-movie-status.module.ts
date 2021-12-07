@@ -4,21 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { IndexPageRoutingModule } from './index-routing.module';
+import { ListMovieStatusPageRoutingModule } from './list-movie-status-routing.module';
 
-import { IndexPage } from './index.page';
+import { ListMovieStatusPage } from './list-movie-status.page';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IndexPageRoutingModule,
-    ComponentsModule,
-    RouterModule
+    ListMovieStatusPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [IndexPage]
+  declarations: [ListMovieStatusPage]
 })
-export class IndexPageModule {}
+export class ListMovieStatusPageModule {}

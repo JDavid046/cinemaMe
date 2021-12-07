@@ -31,7 +31,7 @@ class WatchListController{
             return res.status(409).json({ message: `Something went wrong. Reason:  ${e}` });
         }
         // All ok
-        res.send('WatchList created');
+        res.send({message: 'WatchList created'});
     };
 
     static getAllUserWatchList = async (req: Request, res: Response) => {
@@ -42,6 +42,48 @@ class WatchListController{
             const watchList = await watchListRepository.find({where: {user: id}});            
             res.send(watchList);
         } catch (error) {
+            res.status(404).json({ message: 'Not result.' });
+        }
+
+    };
+
+    static getFilmbyUser = async (req: Request, res: Response) => {
+        const { filmId, userId } = req.params;        
+        const watchListRepository = getRepository(WatchList);
+
+        try {
+            const watchList = await watchListRepository.findOneOrFail({where: {filmId: filmId ,user: userId}});               
+            res.send(true);
+        } catch (error) {
+            res.send(false);
+            //res.status(404).json({ message: 'Not result.' });
+        }
+    };
+
+    static getFilmByStatus = async (req: Request, res: Response) => {
+        const { status, userId } = req.params;             
+        let theStatus;
+
+        switch (status) {
+            case "towatch":
+                theStatus = "To Watch";
+                break;
+
+            case "ongoing":
+                theStatus = "On Going";
+                break; 
+                
+            case "finalized":
+                theStatus = "Finalized";
+                break;     
+        }
+        
+        const watchListRepository = getRepository(WatchList);
+
+        try {
+            const watchList = await watchListRepository.find({where: {estadoFilm:theStatus, user: userId}});               
+            res.send(watchList);
+        } catch (error) {            
             res.status(404).json({ message: 'Not result.' });
         }
 

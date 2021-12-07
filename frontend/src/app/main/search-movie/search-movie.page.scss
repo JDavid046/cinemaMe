@@ -1,0 +1,20 @@
+ 
+  .card-display{    
+      text-align: center;    
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;        
+      background-color:#8bbeb2;
+  }
+  
+  .card-image{
+      height: 370px;
+      width: 250px;
+      object-fit: cover;
+  }
+  
+  .card-text{
+      width: 270px;
+  }
+  

@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;       
+  }
+
+.main-container{
+  height: 100%;  
+  width: 900hv;
+  overflow: scroll;
+}
+
+.image-detail{
+  height: 450px;
+  width: 300px;
+  object-fit: cover;
+}  
+
+.header-detail{
+    background-color: rgb(255, 0, 0);
+    height: 100px;    
+}
+
+.column-detail{
+  flex: 50%;
+  padding: 10px;  
+}
+
+.ion-card{
+  color: black;
+}
+
+.image-column{
+    float: left;
+    width: 35%;
+    padding: 10px;  
+    height: 100%;
+    text-align: center;
+}
+
+.detail-column{
+    float: left;
+    width: 65%;
+    
+}
+
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .image-column {
+      width: 100%;
+    }
+    .detail-column {
+        width: 100%;
+      }
+  }

@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 
-html, content-body {
+html, .content-body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 70%;
 }
 
-content-body {
+.content-body {
   display: flex;
   align-items: center;
   justify-content: center;
