@@ -1,10 +1,10 @@
 <app-header></app-header>
 
-<ion-content>
-    <div id="body">
-        <section class="wrapper">
-            <div class="container">
-            
+<ion-content >
+    <div id="body" >        
+        <section class="wrapper">            
+            <div class="container">                
+                <h1><strong>{{status}} Films</strong></h1>
                 <div class="row">
                     <div class="col-md-4" *ngFor="let item of userFilms">
                         <div class="card text-white card-has-bg click-col" style="background-image:url('{{item.Poster}}');">
@@ -12,15 +12,34 @@
                             <div class="card-img-overlay d-flex flex-column">
                                 <div class="card-body">
                                     <small class="card-meta mb-2">{{status}}</small>
-                                    <h4 class="card-title mt-0 "><a class="text-white">{{item.Title}}</a></h4>
+                                    <h4 class="card-title mt-0 "><a class="text-white">{{item.Title}}</a></h4>                                    
+                                    <h6 class="card-title mt-0 " *ngIf="item.Type == 'series'"><p class="text-white">Series: S{{item.temporadaActual}}</p></h6>
+                                    <h6 class="card-title mt-0 " *ngIf="item.Type == 'movie'"><p class="text-white">Movie</p></h6>
                                     
                                 </div>
                                 <div class="card-footer">
                                     <div class="media">                                        
                                         <div class="media-body">
-                                            <h6 class="my-0 text-white d-block">                                                
-                                                <ion-button shape="round" color="warning">Set as OnGoing</ion-button>
-                                            </h6>                                            
+                                            <h6 class="my-0 text-white d-block" *ngIf="status == 'To Watch'">                                                
+                                                <ion-button shape="round" color="warning" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" (click)="updateStatusFilm(item.imdbID,'On Going', item.Type);" >Set as OnGoing</ion-button>
+                                                <ion-button shape="round" color="danger" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" (click)="deleteFromWatchList(item.imdbID);" ><ion-icon name="trash-outline"></ion-icon></ion-button>
+                                            </h6> 
+                                            
+                                            <h6 class="my-0 text-white d-block" *ngIf="status == 'On Going'">                                                
+                                                <ion-button shape="round" color="primary" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" (click)="updateStatusFilm(item.imdbID,'To Watch', item.Type);">Set as To Watch</ion-button>
+                                                <ion-button shape="round" color="success" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" (click)="updateStatusFilm(item.imdbID,'Finalized', item.Type);">Set as Finalized</ion-button>
+                                            </h6> 
+
+                                            <h6 class="my-0 text-white d-block" *ngIf="status == 'Finalized'">    
+                                                <ion-button shape="round" color="tertiary" data-toggle="modal" data-target="#editItemModal">Edit &nbsp;<ion-icon name="create-outline"></ion-icon></ion-button>                                                                                                                                          
+                                                <app-edit-modal></app-edit-modal>
+                                                <ion-button shape="round" color="warning" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">From: {{item.fechaInicio}} 
+                                                    <br>To: {{item.fechaFin}}</ion-button>
+                                                
+                                                <ion-button shape="round" color="danger" (click)="deleteFromWatchList(item.imdbID);">                                                    
+                                                    <ion-icon name="trash-outline"></ion-icon>
+                                                </ion-button>    
+                                            </h6> 
                                         </div>
                                     </div>
                                 </div>

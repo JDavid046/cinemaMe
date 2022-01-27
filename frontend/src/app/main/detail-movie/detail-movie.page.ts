@@ -48,12 +48,18 @@ export class DetailMoviePage implements OnInit {
           
     try {
       await this.cinemaSvc.addFilm(body);
-      Swal.fire({      
-        text: `The Film has been added succesfully.`,
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
-      setTimeout(() => {  window.location.reload(); }, 3000);
+
+      Swal.fire({        
+        text: "The Film has been added succesfully.",
+        icon: 'success',        
+        confirmButtonColor: '#3085d6',                
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      }) 
+
+     
       
     } catch (error) {
       Swal.fire({

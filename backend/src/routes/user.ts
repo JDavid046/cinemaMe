@@ -22,7 +22,7 @@ router.post('/', UserController.new);
 router.patch('/:id', [checkJwt], UserController.edit);
 
 // Delete
-router.delete('/:id', UserController.delete);
+router.delete('/:id', [checkJwt], UserController.delete);
 
 
 /**
@@ -43,5 +43,8 @@ router.get('/film/status/:status/:userId', WatchListController.getFilmByStatus);
 
 // Update 1 User's WatchList
 router.patch('/film/:userId/:filmId', WatchListController.updateStateUserWatchList);
+
+// Delete 1 User's WatchList
+router.delete('/film/delete/:userId/:filmId/:status', WatchListController.deleteUserWatchList);
 
 export default router;

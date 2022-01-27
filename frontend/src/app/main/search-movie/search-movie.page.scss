@@ -1,11 +1,12 @@
- 
+.elMain{
+    height: 100%;    
+} 
   .card-display{    
       text-align: center;    
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-around;        
-      background-color:#8bbeb2;
+      justify-content: space-around;            
   }
   
   .card-image{

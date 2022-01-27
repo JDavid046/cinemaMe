@@ -1,9 +1,8 @@
-// ------------------------------------------------------------------
 // ** ------------- Header ---------------------------------------**
 // ------------------------------------------------------------------
 
 .header-blue {  
-  background-color: #3a3739;  
+  background-color: #32021F;  
   font-family: 'Source Sans Pro', sans-serif
 }
 
@@ -34,7 +33,7 @@
 }
 
 .header-blue .navbar .navbar-collapse {
-  border-top: 1px solid rgb(255,102,203);
+  border-top: 1px solid rgb(255,102,203);  
   margin-top: .5rem
 }
 
@@ -79,7 +78,7 @@
 }
 
 .header-blue .navbar.navbar-light .navbar-nav .nav-link {
-  color: #fff
+  color: #fff;  
 }
 
 .header-blue .navbar.navbar-light .navbar-nav .nav-link:focus,
@@ -121,4 +120,25 @@
 
 .header-blue .action-button:hover {
   color: #fff
+}
+
+.header-blue .navbar .form-inline label {
+  color: #d9d9d9
+}
+
+
+.header-blue .navbar .form-inline .search-field:focus {
+  border-bottom: 1px solid #ccc;  
+}
+
+
+
+/* ---------------------------------------------------------------
+*   Description
+*/ ---------------------------------------------------------------
+
+info-content{
+  background-color: #A18276;
+  height: 100%;
+  width: 100%;
 }

@@ -46,7 +46,7 @@ class AuthController {
     try {
       user = await userRepository.findOneOrFail(userId);
     } catch (e) {
-      res.status(400).json({ message: 'Somenthing goes wrong!' });
+      res.status(400).json({ message: 'Something went wrong!' });
     }
 
     if (!user.checkPassword(oldPassword)) {
@@ -66,6 +66,17 @@ class AuthController {
     userRepository.save(user);
 
     res.json({ message: 'Password change!' });
+  };
+
+  static test = async (req: Request, res: Response) => {
+    const { num } = req.body;
+
+    if(num%2 == 0){
+      return res.status(200).json({ message: 'Number is even' });
+    }
+    else{
+      return res.status(400).json({ message: 'Number is NOT even' });
+    }
   };
 }
 export default AuthController;

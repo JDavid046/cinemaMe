@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { CinemaService } from 'src/app/shared/services/cinemame.service';
 import { MoviesService } from 'src/app/shared/services/omdb.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +17,8 @@ export class SearchMoviePage implements OnInit {
   title = "";
   page=1;
 
-  constructor(private movieService: MoviesService) { }
+  constructor(private movieService: MoviesService,
+    private cinemaSvc: CinemaService) { }
 
   ngOnInit() {
   }

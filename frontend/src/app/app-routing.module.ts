@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'list-movie-status/:status',
     loadChildren: () => import('./main/list-movie-status/list-movie-status.module').then( m => m.ListMovieStatusPageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./main/profile/profile.module').then( m => m.ProfilePageModule)
   },
+
 
 
 

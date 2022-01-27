@@ -40,6 +40,7 @@ export class CinemaService {
 
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
@@ -80,5 +81,61 @@ export class CinemaService {
 
   getFilmByStatus(status:string, userId: string){      
     return this.http.get(`${environment.API_1}/users/film/status/${status}/${userId}`).toPromise();
+  }
+
+  updateFilmStatus(userId:string, filmId: string, body){
+    return this.http.patch(`${environment.API_1}/users/film/${userId}/${filmId}`,body).toPromise();
+  }
+
+  deleteFilm(userId:string, filmId: string, status:string){
+    return this.http.delete(`${environment.API_1}/users/film/delete/${userId}/${filmId}/${status}`).toPromise();
+  }
+
+  getUser(){
+    return this.http.get(`${environment.API_1}/users/${this.getTokenId()}`,{
+      headers: {
+        "auth": localStorage.getItem('token')
+      }
+    }).toPromise();
+  }
+
+  updateUser(email, name, surname, dateOfBirth){    
+    return this.http.patch(`${environment.API_1}/users/${this.getTokenId()}`,{
+      "email": email, 
+      "nombre": name,
+      "apellido": surname,
+      "fechaNacimiento": dateOfBirth
+    },{
+      headers: {
+        "auth": localStorage.getItem('token')
+      }
+    }).toPromise();
+  }
+
+  changePassword(oldPassword, newPassword){
+    return this.http.post(`${environment.API_1}/auth/change-password`,{"oldPassword": oldPassword, "newPassword": newPassword},
+    {
+      headers: {
+        "auth": localStorage.getItem('token')
+      },
+      observe: 'response'
+    });
+  }
+
+  test(number){
+    return this.http.post(`${environment.API_1}/auth/test`,{"num": number},{ 
+      headers: {
+        "auth": localStorage.getItem('token')
+      },
+      observe: 'response'
+     });
+  }
+
+  deleteUser(){
+    return this.http.delete(`${environment.API_1}/users/${this.getTokenId()}`,{
+      headers: {
+        "auth": localStorage.getItem('token')
+      }
+    }).toPromise();
   }
 }

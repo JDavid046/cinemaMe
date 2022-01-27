@@ -1,6 +1,59 @@
-<div *ngIf="cinemaSvc.isLogged | async">
-    <app-header></app-header>
-    <ion-content>
-        index
-    </ion-content>        
-</div>
+<ng-container *ngIf="cinemaSvc.isLogged | async">
+    <app-header></app-header>          
+    <ng-container class="html">
+        <ion-content class="body">
+            <h1 style="margin-left: 5%;"><strong>¡Hola!, Bienvenido</strong></h1>
+            <div class='container'>
+                <div class='bg-1'>  
+                    <div style="width:100%;">
+                        <canvas id="myChart" #mychart></canvas>
+                     </div>                                    
+                </div>
+                <div class='bg-1'>
+                    <h2><i class="fas fa-battery-three-quarters"></i></h2>
+                    <p>Respiration</p>
+                </div>
+                <div class='bg-2'>
+                    <h2><i class="fas fa-running"></i></h2>
+                    <p>Miles</p>
+                </div>
+                <div class='bg-1'>
+                    <h2>36&deg; C</h2>
+                    <p>Temperature</p>
+                </div>
+                <div class='bg-1'>
+                    <h2><i class="fas fa-bed"></i></h2>
+                    <p>Sleep Keep</p>
+                </div>
+                <div class='bg-2'>
+                    <h2>98 BPM</h2>
+                    <p>Heart Rate</p>
+                </div>
+                <div class='bg-1' style='color:#fff'>
+                    <h2>170 lbs</h2>
+                    <p>Weight</p>
+                </div>
+                <div class='bg-2'>
+                    <h2>28 <span>%</span></h2>
+                    <p>Fat Percentage</p>
+                </div>
+                <div class='bg-2'>
+                    <h2>118 mgdl</h2>
+                    <p>Blood Glucose</p>
+                </div>
+                <div class='bg-2'>
+                    <h2>680 kcal</h2>
+                    <p>AVG Consumption</p>
+                </div>
+                <div class='bg-2'>
+                    <h2><i class="fas fa-dumbbell"></i></h2>
+                    <p>Workout</p>
+                </div>
+                <div class='bg-2'>
+                    <h2>85 <span>%</span></h2>
+                    <p>Body Hydration</p>
+                </div>
+            </div>
+        </ion-content>
+    </ng-container>
+</ng-container>

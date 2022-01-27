@@ -1,0 +1,30 @@
+<div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Start Date:</label>
+            <div class="col-md-12"><input type="date" class="form-control"
+              placeholder="Start Date" name ="startDate" required></div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">End Date:</label>
+            <div class="col-md-12"><input type="date" class="form-control"
+              placeholder="End Date" name ="endDate" required></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="editItem()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>  

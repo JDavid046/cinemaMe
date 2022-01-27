@@ -93,7 +93,9 @@ class WatchListController{
         let user;
         let watchList;
         const { userId, filmId } =req.params;
-        const { status } = req.body;
+        const { status, currentSeason } = req.body;
+
+        console.log(userId, filmId, status, currentSeason);
 
         const watchListRepository = getRepository(WatchList);
         const userRepository = getRepository(Users);
@@ -101,38 +103,38 @@ class WatchListController{
         try {
           watchList = await watchListRepository.findOneOrFail({where: {filmId: filmId, user: userId}});
           user = await userRepository.findOneOrFail(userId);
-
+            console.log(watchList.temporadaActual);
           /*watchList.user = user;
           watchList.filmId = filmId;*/
 
           let theDate = new Date();        
           
           switch (status) {
-                case "En Curso":                          
+                case "On Going":                          
                     watchList.fechaInicio = theDate.toISOString().split('T')[0];  
                     watchList.estadoFilm = status;
-                    watchList.temporadaActual = "0";
+                    watchList.temporadaActual = currentSeason;
                     break;
 
-                case "Finalizado":
-                    watchList.fechaFin = theDate.toISOString().split('T')[0];  
-                    watchList.temporadaActual = "0";
+                case "Finalized":
+                    watchList.fechaFin = theDate.toISOString().split('T')[0];                      
                     watchList.estadoFilm = status;
                     break;          
           
-                default:
+                case "To Watch":                                               
+                    watchList.estadoFilm = status;                    
                     break;
           }
     
         } catch (e) {
           return res.status(404).json({ message: 'WatchList not found' });
         }
-        const validationOpt = { validationError: { target: false, value: false } };
+        /**const validationOpt = { validationError: { target: false, value: false } };
         const errors = await validate(watchList, validationOpt);
     
         if (errors.length > 0) {
           return res.status(400).json(errors);
-        }
+        }**/
     
         // Try to save watchlist
         try {
@@ -142,6 +144,30 @@ class WatchListController{
         }
     
         res.status(201).json({ message: 'WatchList Updated' });       
+    };
+
+
+    static deleteUserWatchList = async (req: Request, res: Response) => {
+        const { userId, filmId, status } = req.params;
+        const watchListRepository = getRepository(WatchList);
+        const userRepository = getRepository(Users);
+        let user: Users;
+        let watchList: WatchList;
+
+        try {
+            watchList = await watchListRepository.findOneOrFail({where: {filmId: filmId, user: userId, estadoFilm: status}});
+            user = await userRepository.findOneOrFail(userId);
+        } catch (e) {
+            return res.status(404).json({ message: 'WatchList not found' });
+        }
+
+        // Remove WatchList
+        watchListRepository.delete({
+            filmId: filmId,
+            user: user,
+            estadoFilm: status
+        });
+        res.status(201).json({ message: ' WhatchList deleted' });
     };
 }
 
